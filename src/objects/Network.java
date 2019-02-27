@@ -23,7 +23,7 @@ public class Network {
 			
 		}
 		
-		for (int i = 0; i < NUM_LAYERS; i++) {
+		for (int i = 0; i < NUM_LAYERS; i++) { //set initial weights
 			if (i == 0) { //use number of inputs to create weights
 				weights[i] = new double[numInputs][LAYER_SIZE[i]];
 			} else { //use size of last layer
@@ -31,7 +31,7 @@ public class Network {
 			}
 			for (int j = 0; j < weights[i].length; j++) {
 				for (int k = 0; k < weights[i][j].length; k++) { 
-					double weight = Math.random();
+					double weight = Math.random() * 0.05;
 					if (Math.random() > 0.5) weight = -weight;
 					weights[i][j][k] = weight;
 				}
@@ -45,6 +45,10 @@ public class Network {
 	
 	public Node[] getLayer(int layer) {
 		return layers[layer];
+	}
+	
+	public int getNumLayers() {
+		return NUM_LAYERS;
 	}
 	
 	public void printNetwork() {
